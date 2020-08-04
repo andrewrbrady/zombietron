@@ -34,27 +34,37 @@ This is my personal skeleton and build system for creatin Adobe Extension Panels
 - [Debugging][799ff033] may be done in Chrome at http://localhost:8073/
   - This address may be set to anything you want in the invisible **debug** file
 
-## Signing
+## Development
+
+Gulp drives the development build for this panel for quicker development and cleaner code.
+
+How this works:
+
+1. Gulp combines all files in the dev/jsx folder into one jsx file. It wraps this jsx file in an anonymous function.
+2. Gulp combines all files in the dev/js folder into one js file. It wraps this js file in an anonymous function.
+
+How to use the development build feature:
+
+1. Make changes to your HTML, JS, and/or JSX files in the "dev" folder.
+2. Type the following command into the command line below.
+
+```shell
+gulp dev
+```
+
+3. Open or right click and reload the panel in the Adobe Create Suite program you are working in to test/see your changes.
+
+## Building
 
 Once you're all done and want to share with someone else you need to sign the extension. This is for security and means it can't be edited. You need to create a certificate but you only need to do this once. Reuse this certificate for future tools too.
 
-1. Download [ZXPSignCmd][799ff037].
+1. Download [ZXPSignCmd][799ff037] and place it in your Applications folder.
 
-- Open terminal and cd to the location of the downloaded ZXPSignCmd
-- Paste a similar string to this:
-- `./ZXPSignCmd -selfSignedCert US GA "Battle Axe" "Adam Plouff" password cert.p12`
-- Which roughly equates to:
-- ./ZXPSignCmd -selfSignedCert [Country][state] "[Company]" "[Author]" [password] cert.p12
-- Place this new **cert.p12** file in the **Gulp** folder
-- Locate **gulpfile.js** and update the password on line 48 to reflect the password you used when creating the certificate file
-- Back in Terminal, cd to the **Gulp** folder
 - Type **gulp** and hit enter
-- A brand new **BrutalNameTool.zxp** will now be the **Gulp/dist** folder
-- Delete the symlink project folder
+- A brand new **BrutalNameTool.zxp** will now be the **Skelotron/Install** folder
 - Install this new zxp file with ZXP Installer to make sure it works
-- High5 yourself for becoming a CEP developer
 
-## Thank you
+Obviously Adam Plouff, for releasing this to the public under the Apache 2.0 license. Also Zack and the rest of the people in the Motion Design Artists Dev channel.
 
 This package would have been a mess without the guidance and ongoing support of [Zack Lovatt][799ff039]. He came up with the really lean `evalScript()` func that is changing the way I build tools and so many other real-boy coder tips. Zack is light in the dark world of Adobe tool dev.
 
@@ -71,4 +81,5 @@ Apache 2.0
 [799ff035]: https://aescripts.com/learn/zxp-installer/ "ZXP Installer"
 [799ff037]: https://github.com/Adobe-CEP/CEP-Resources/tree/master/ZXPSignCMD "ZXPSignCmd"
 [799ff039]: http://zacklovatt.com/ "Zack Lovatt"
+[799ff041]: https://nodejs.org/en/download/ "Node.js"
 [799ff041]: https://nodejs.org/en/download/ "Node.js"
