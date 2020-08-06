@@ -121,7 +121,7 @@ var cs = new CSInterface();
 var fs = require("fs");
 console.log(cs);
 
-var scriptName = "Skelotron";
+var scriptName = "Zombietron";
 var devName = "BattleAxe";
 
 var devPath = cs.getSystemPath(SystemPath.USER_DATA) + "/" + devName + "/";
@@ -181,7 +181,7 @@ var flyoutXML =
 
 cs.setContextMenu(flyoutXML, function(res) {
   if (res == "settings") {
-    cs.requestOpenExtension("com.Skelotron.modal", "");
+    cs.requestOpenExtension("com.Zombietron.modal", "");
   }
   if (res == "reload") {
     window.location.reload(true);
@@ -195,7 +195,7 @@ cs.setPanelFlyoutMenu(flyoutXML);
 
 cs.addEventListener("com.adobe.csxs.events.flyoutMenuClicked", function(evt) {
   if (evt.data.menuId == "settings") {
-    cs.requestOpenExtension("com.Skelotron.modal", "");
+    cs.requestOpenExtension("com.Zombietron.modal", "");
   }
   if (evt.data.menuId == "reload") {
     window.location.reload(true);

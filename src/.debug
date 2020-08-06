@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtensionList>
-    <Extension Id="com.Skelotron.panel">
+    <Extension Id="com.Zombietron.panel">
         <HostList>
           <!-- AfterEffects -->
           <Host Name="AEFT" Port="8073" />
         </HostList>
     </Extension>
-    <Extension Id="com.Skelotron.modal">
+    <Extension Id="com.Zombietron.modal">
         <HostList>
           <!-- AfterEffects -->
           <Host Name="AEFT" Port="8063" />

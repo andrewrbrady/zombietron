@@ -206,7 +206,7 @@ function setComp() {
   return true;
 }
 
-////// Public functions that are available to the host app by calling Skelotron.getCompName() etc //////
+////// Public functions that are available to the host app by calling Zombietron.getCompName() etc //////
 return {
   getCompName: function() {
     return getCompName();

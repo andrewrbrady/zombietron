@@ -1,4 +1,4 @@
-# ARB Skelotron - CEP skeleton template
+# ARB Zombietron - CEP skeleton template
 
 This is my personal skeleton and build system for creatin Adobe Extension Panels. It is based off the excellent Skeletor skeleton from Adam Plouff.
 
@@ -22,10 +22,10 @@ This is my personal skeleton and build system for creatin Adobe Extension Panels
 
 ## Usage
 
-1. Do a search and replace for all the files in the **Gulp** and **Skelotron** folders for **_Skelotron_** and name it something brutal. I used [Atom][799ff027] for this.
+1. Do a search and replace for all the files in the **Gulp** and **Zombietron** folders for **_Zombietron_** and name it something brutal. I used [Atom][799ff027] for this.
 
-- Rename the **_Skelotron_** project folder to match your brutal new tool name
-- Create a symbolic link ([OS X][799ff029]/[Windows][799ff031]) from your newly named project folder (formerly named **Skelotron**) to the Adobe Extensions folder. This allows you work with your project folder wherever you want it and still have it open in After Effects.
+- Rename the **_Zombietron_** project folder to match your brutal new tool name
+- Create a symbolic link ([OS X][799ff029]/[Windows][799ff031]) from your newly named project folder (formerly named **Zombietron**) to the Adobe Extensions folder. This allows you work with your project folder wherever you want it and still have it open in After Effects.
 - [Mac]: /Users/**username**/Library/Application Support/Adobe/CEP/extensions/
 - [Win]: C:/Users/**username**/AppData/Roaming/Adobe/CEP/extensions/
 - Download [ZXP Installer][799ff035]. Open it and navigate to settings. In here you can **enable extension debugging** which allows you to open and use unsigned (in progress) extensions.
@@ -61,7 +61,7 @@ Once you're all done and want to share with someone else you need to sign the ex
 1. Download [ZXPSignCmd][799ff037] and place it in your Applications folder.
 
 - Type **gulp** and hit enter
-- A brand new **BrutalNameTool.zxp** will now be the **Skelotron/Install** folder
+- A brand new **BrutalNameTool.zxp** will now be the **Zombietron/Install** folder
 - Install this new zxp file with ZXP Installer to make sure it works
 
 Obviously Adam Plouff, for releasing this to the public under the Apache 2.0 license. Also Zack and the rest of the people in the Motion Design Artists Dev channel.

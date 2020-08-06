@@ -1,4 +1,4 @@
-var Skelotron = (function () {	/// this is the publicObject for the script
+var Zombietron = (function () {	/// this is the publicObject for the script
 
 function makeNewComp(options) {
   var newComp = app.project.items.addComp(
@@ -225,7 +225,7 @@ function setComp() {
   return true;
 }
 
-////// Public functions that are available to the host app by calling Skelotron.getCompName() etc //////
+////// Public functions that are available to the host app by calling Zombietron.getCompName() etc //////
 return {
   getCompName: function() {
     return getCompName();

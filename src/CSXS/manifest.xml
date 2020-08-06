@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtensionManifest
 	Version="5.0"
-	ExtensionBundleId="Skelotron"
+	ExtensionBundleId="Zombietron"
 	ExtensionBundleVersion="0.1.1"
-	ExtensionBundleName="Skelotron"
+	ExtensionBundleName="Zombietron"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
-		<Extension Id="com.Skelotron.panel" Version="1.0" />
-		<Extension Id="com.Skelotron.modal" Version="1.0" />
+		<Extension Id="com.Zombietron.panel" Version="1.0" />
+		<Extension Id="com.Zombietron.modal" Version="1.0" />
 	</ExtensionList>
 	<ExecutionEnvironment>
 		<HostList>
@@ -36,7 +36,7 @@
 		</RequiredRuntimeList>
 	</ExecutionEnvironment>
 	<DispatchInfoList>
-		<Extension Id="com.Skelotron.panel">
+		<Extension Id="com.Zombietron.panel">
 			<DispatchInfo >
 				<Resources>
 				<MainPath>./html/index.html</MainPath>
@@ -52,7 +52,7 @@
 				<UI>
 					<Type>Panel</Type>
 					<!-- The panel's name -->
-					<Menu>Skelotron</Menu>
+					<Menu>Zombietron</Menu>
 					<Geometry>
 						<Size>
 							<Height>300</Height>
@@ -73,7 +73,7 @@
 			</DispatchInfo>
 		</Extension>
 
-		<Extension Id="com.Skelotron.modal">
+		<Extension Id="com.Zombietron.modal">
 			<DispatchInfo >
 				<Resources>
 				<MainPath>./html/modal.html</MainPath>

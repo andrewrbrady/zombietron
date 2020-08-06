@@ -12,7 +12,7 @@ var gulp = require("gulp"),
   // folder vars
   destinationFolder = "Install/",
   sourceFolder = "src/",
-  panelName = "Skelotron";
+  panelName = "Zombietron";
 compressed = true;
 const { series, watch, src, dest } = require("gulp");
 const fs = require("fs");
@@ -94,7 +94,7 @@ function devBuildJSX(cb) {
   console.log(__dirname);
   return src([
     `${__dirname}/dev/jsx/*.jsx`,
-    `${__dirname}/dev/jsx/return/skeletor-body.jsx`
+    `${__dirname}/dev/jsx/return/zombietron-body.jsx`
   ])
     .pipe(concat("all.jsx"))
     .pipe(dest(`${__dirname}/src/jsx/`));
@@ -104,7 +104,7 @@ function devBuildJSX(cb) {
 function devBuildHTML(cb) {
   console.log(__dirname);
   console.log("Building HTML");
-  return src([`${__dirname}/dev/html/skelotron.html`])
+  return src([`${__dirname}/dev/html/zombietron.html`])
     .pipe(concat("index.html"))
     .pipe(dest(`${__dirname}/src/html/`));
   cb();
@@ -128,7 +128,7 @@ function wrapJS(cb) {
 }
 
 function wrapMain(cb) {
-  let header = `var Skelotron = (function () {	/// this is the publicObject for the script`;
+  let header = `var Zombietron = (function () {	/// this is the publicObject for the script`;
   let footer = `})();`;
   fs.readFile(`${__dirname}/src/jsx/all.jsx`, "utf-8", function(err, content) {
     // console.log(content);
@@ -161,7 +161,7 @@ exports.default = function() {
 
 const build = series(compressFiles, function(callback) {
   shell([
-    "/Applications/ZXPSignCmd -selfSignedCert US IL AndrewRBrady Skelotron password cert.p12"
+    "/Applications/ZXPSignCmd -selfSignedCert US IL AndrewRBrady Zombietron password ./cert.p12"
   ]);
   zxpSignCmd.sign(
     {
