@@ -1,5 +1,6 @@
 var cs = new CSInterface();
 var fs = require("fs");
+console.log(cs);
 
 var scriptName = "Skelotron";
 var devName = "BattleAxe";
@@ -28,6 +29,8 @@ function evalScript(funcName, params) {
     cs.evalScript(command, resolve);
   });
 }
+
+evalScript("makeNewComp");
 ///// insures that a folder exists before saving files
 function checkDir(path) {
   var stat = window.cep.fs.stat(path);
@@ -87,8 +90,7 @@ cs.addEventListener("com.adobe.csxs.events.flyoutMenuClicked", function(evt) {
 cs.addEventListener(CSInterface.THEME_COLOR_CHANGED_EVENT, setBgColor);
 
 function setBgColor() {
-  var appColor = cs.getHostEnvironment().appSkinInfo.panelBackgroundColor
-    .color;
+  var appColor = cs.getHostEnvironment().appSkinInfo.panelBackgroundColor.color;
   document.body.style.backgroundColor =
     "rgb(" +
     Math.floor(appColor.red) +

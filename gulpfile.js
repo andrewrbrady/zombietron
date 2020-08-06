@@ -31,14 +31,16 @@ const copy = series(clean, function(cb) {
 });
 
 function compressJS() {
-  return gulp
-    .src(destinationFolder + panelName + "/**/*.js")
-    // .pipe(
-    //   uglify().on("error", function(e) {
-    //     console.log(e);
-    //   })
-    // )
-    .pipe(gulp.dest(destinationFolder + panelName));
+  return (
+    gulp
+      .src(destinationFolder + panelName + "/**/*.js")
+      // .pipe(
+      //   uglify().on("error", function(e) {
+      //     console.log(e);
+      //   })
+      // )
+      .pipe(gulp.dest(destinationFolder + panelName))
+  );
 }
 
 function compressCSS() {
@@ -90,12 +92,23 @@ const jsxBin = series(compressJSX, function() {
 });
 function devBuildJSX(cb) {
   console.log(__dirname);
-  return src(`${__dirname}/dev/jsx/*.jsx`)
+  return src([
+    `${__dirname}/dev/jsx/*.jsx`,
+    `${__dirname}/dev/jsx/return/skeletor-body.jsx`
+  ])
     .pipe(concat("all.jsx"))
     .pipe(dest(`${__dirname}/src/jsx/`));
   cb();
 }
 
+function devBuildHTML(cb) {
+  console.log(__dirname);
+  console.log("Building HTML");
+  return src([`${__dirname}/dev/html/skelotron.html`])
+    .pipe(concat("index.html"))
+    .pipe(dest(`${__dirname}/src/html/`));
+  cb();
+}
 function devBuildJS(cb) {
   console.log(__dirname);
   return src(`${__dirname}/dev/js/*.js`)
@@ -104,30 +117,42 @@ function devBuildJS(cb) {
   cb();
 }
 function wrapJS(cb) {
-  let header = `(function () {	/// wrapping in an anonymous function`
+  let header = `(function () {	/// wrapping in an anonymous function`;
   let footer = `})();`;
   fs.readFile(`${__dirname}/src/js/all.js`, "utf-8", function(err, content) {
     let newContent = header + "\n\n" + content + "\n\n" + footer;
+    console.log(newContent);
     fs.writeFile(`${__dirname}/src/js/all.js`, newContent, () => {});
   });
-  cb()
+  cb();
 }
 
 function wrapMain(cb) {
-  let header = `var Skelotron = (function () {	/// this is the publicObject for the script`
+  let header = `var Skelotron = (function () {	/// this is the publicObject for the script`;
   let footer = `})();`;
   fs.readFile(`${__dirname}/src/jsx/all.jsx`, "utf-8", function(err, content) {
-    console.log(content)
+    // console.log(content);
     let newContent = header + "\n\n" + content + "\n\n" + footer;
-    console.log(newContent)
+    // console.log(newContent);
     fs.writeFile(`${__dirname}/src/jsx/all.jsx`, newContent, () => {});
   });
-  cb()
+  cb();
 }
 
 exports.dev = function() {
-  watch(`${__dirname}/dev/jsx/*.jsx`, series(devBuildJSX, wrapMain));
-  watch(`${__dirname}/dev/js/*.js`, series(devBuildJS, wrapJS));
+  series(devBuildHTML, devBuildJSX, wrapMain, devBuildJS, wrapJS);
+  watch(
+    `${__dirname}/dev/html/*.html`,
+    series(devBuildHTML, devBuildJSX, wrapMain, devBuildJS, wrapJS)
+  );
+  watch(
+    `${__dirname}/dev/jsx/*.jsx`,
+    series(devBuildHTML, devBuildJSX, wrapMain, devBuildJS, wrapJS)
+  );
+  watch(
+    `${__dirname}/dev/js/*.js`,
+    series(devBuildHTML, devBuildJSX, wrapMain, devBuildJS, wrapJS)
+  );
 };
 
 exports.default = function() {

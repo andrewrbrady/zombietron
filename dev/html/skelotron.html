@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script type="text/javascript">
+      window.module = undefined;
+    </script>
+    <title>Zombietron</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="content" class="content">
+        <div class="group">
+          <div class="subsection-title">Make New Comp</div>
+          <!-- comment -->
+          <input
+            type="text"
+            class="textbox"
+            placeholder="Name"
+            id="comp-name-input"
+          /><br />
+          <input
+            type="text"
+            class="textbox"
+            placeholder="1920"
+            id="comp-width-input"
+          /><br />
+          <input
+            type="text"
+            class="textbox"
+            placeholder="1080"
+            id="comp-height-input"
+          /><br />
+          <input
+            type="text"
+            class="textbox"
+            placeholder="15"
+            id="comp-duration-input"
+          /><br />
+          <input
+            type="text"
+            class="textbox"
+            placeholder="29.97"
+            id="comp-framerate-input"
+          /><br />
+          <input
+            type="text"
+            class="textbox"
+            placeholder="1"
+            value="1"
+            id="comp-par-input"
+          /><br />
+          <div class="func-button" id="make-new-comp-button">
+            Make New Composition
+          </div>
+        </div>
+        <div class="group">
+          <div id="framerates">
+            <div class="subsection-title">Apply Frame Rates</div>
+          </div>
+        </div>
+        <div class="group">
+          <div id="dimensions">
+            <div class="subsection-title">Apply Dimensions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/libs/CSInterface.js"></script>
+    <script src="../js/all.js"></script>
+  </body>
+</html>
