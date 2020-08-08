@@ -12,6 +12,7 @@
   "devDependencies": {
     "del": "^3.0.0",
     "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.0",
     "gulp-include": "^2.3.1",

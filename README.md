@@ -1,47 +1,86 @@
-# ARB Zombietron - CEP skeleton template
+# Zombietron - CEP skeleton template
 
-This is my personal skeleton and build system for creatin Adobe Extension Panels. It is based off the excellent Skeletor skeleton from Adam Plouff.
+This is my personal boilerplate and build system for creating Adobe Extension Panels.
+
+It is based on [Adam Plouff's excellent Skeletor template](https://github.com/adamplouff/CEP-Skelotron).
 
 ## Features
 
+### ~~All~~ Most of the Original Skeletor Features
+
 - Transferring data as JSON from panel to be used within an extendscript function
 - Modal popup
-- Gulp setup for developing panels, allowing for quicker development with quicker code.
-- Gulp setup for packaging up the extension. Works with Gulp 4.
 - Automatic detection of host app brightness to match panel - updating with JavaScript
 - Context and flyout menus
 
+### New Features
+
+- Rewritten gulpfile, using Gulp 4.
+- Added Gulp development build, allowing for quicker panel development with quicker code.
+- Gulp setup for packaging up the extension.
+
+### RIP
+
+- Removed Vue and Vue-dependent features 😢
+
+### Work in Progress
+
+- Using Gulp Shell to generate a certificate file.
+
 ## Setup
 
-1. Download [Node.js][799ff041]. It comes with a command line app called NPM that downloads a bunch of little packages that allow you to build the extension.
+1. Clone Zombietron from Github using the following command
 
-- Download this package and unzip it
-- Open up Terminal and cd into the newly unzipped project folder
-- Type `npm install` and press enter to see a bunch of the fun progress bars
-- There will now be a node_modules folder filled with all sorts of stuff you don't need to worry about
+```shell
+git clone https://github.com/andrewrbrady/zombietron.git
+```
 
-## Usage
+2. Rename the **_Zombietron_** project folder to match your brutal new tool name
+3. cd into the new project folder
+4. Install the necessary packages with npm.
 
-1. Do a search and replace for all the files in the **Gulp** and **Zombietron** folders for **_Zombietron_** and name it something brutal. I used [Atom][799ff027] for this.
+```shell
+npm install
+```
 
-- Rename the **_Zombietron_** project folder to match your brutal new tool name
-- Create a symbolic link ([OS X][799ff029]/[Windows][799ff031]) from your newly named project folder (formerly named **Zombietron**) to the Adobe Extensions folder. This allows you work with your project folder wherever you want it and still have it open in After Effects.
-- [Mac]: /Users/**username**/Library/Application Support/Adobe/CEP/extensions/
-- [Win]: C:/Users/**username**/AppData/Roaming/Adobe/CEP/extensions/
-- Download [ZXP Installer][799ff035]. Open it and navigate to settings. In here you can **enable extension debugging** which allows you to open and use unsigned (in progress) extensions.
-- Open After Effects and navigate to Window > Extensions > **Brutal tool name**
-- Edit the **index.html**, **style.css**, **app.js** and **script.jsx** all you want to make it look cool and do great stuff. Bonus points if you use **modal.html** and **modal.js**.
-- [Debugging][799ff033] may be done in Chrome at http://localhost:8073/
-  - This address may be set to anything you want in the invisible **debug** file
+5. Do a search and replace for all the files in the **Zombietron** folder for **_Zombietron_** and name it something brutal.
+
+- You can try the following shell command. OSX users-please note the blank input for the sed command. This was necessary during testing.
+
+```shell
+cd ../
+grep -rl Zombietron . --exclude-dir=.git | xargs sed -i '' 's/Zombietron/BrutalNameTool/g'
+```
+
+Mac: /Users/**username**/Library/Application Support/Adobe/CEP/extensions/
+
+Win: C:/Users/**username**/AppData/Roaming/Adobe/CEP/extensions/
+
+```shell
+ ln -s /Users/${USER}/Development/BrutalNameTool/src BrutlaNameTool
+```
+
+6. Download [ZXP Installer][799ff035]. Open it and navigate to settings. In here you can **enable extension debugging** which allows you to open and use unsigned (in progress) extensions.
+
+7. Open After Effects and navigate to Window > Extensions > **Brutal tool name**
+8. Follow the instructions in the "Development" section to use Gulp to develop your panel.
+
+9 [Debugging][799ff033] may be done in Chrome at http://localhost:8073/
+
+- This address may be set to anything you want in the invisible **debug** file
 
 ## Development
 
-Gulp drives the development build for this panel for quicker development and cleaner code.
+```shell
+gulp dev
+```
 
-How this works:
+Typing the above into the termianl will create a development build for this panel.
 
-1. Gulp combines all files in the dev/jsx folder into one jsx file. It wraps this jsx file in an anonymous function.
-2. Gulp combines all files in the dev/js folder into one js file. It wraps this js file in an anonymous function.
+What does this do?
+
+1. Combines all files in the dev/jsx folder into one jsx file. It then wraps this .jsx file in an anonymous function.
+2. Combines all files in the dev/js folder into one js file. It then wraps the code within this .js file in an anonymous function.
 
 How to use the development build feature:
 

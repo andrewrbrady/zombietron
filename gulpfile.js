@@ -18,6 +18,7 @@ const { series, watch, src, dest } = require("gulp");
 const fs = require("fs");
 const shell = require("gulp-shell");
 const concat = require("gulp-concat");
+var cp = require("child_process");
 
 function clean() {
   return del([destinationFolder + "**/*"]);
@@ -159,27 +160,73 @@ exports.default = function() {
   watch(`${__dirname}/src/*.js`, series(clean, test, build));
 };
 
-const build = series(compressFiles, function(callback) {
-  shell([
-    "/Applications/ZXPSignCmd -selfSignedCert US IL AndrewRBrady Zombietron password ./cert.p12"
-  ]);
-  zxpSignCmd.sign(
-    {
-      input: destinationFolder + panelName,
-      output: destinationFolder + panelName + ".zxp",
-      cert: "./cert.p12",
-      password: "password",
-      timestamp: "http://timestamp.digicert.com"
-    },
-    function(error, result) {
-      callback();
-    }
-  );
+async function createCert() {
+  let certOptions = {
+    country: "US",
+    province: "IL",
+    org: "AndrewRBrady",
+    name: "BasicCert",
+    password: "password",
+    output: `${__dirname}/cert.p12`
+  };
+  const certificate = await zxpSignCmd.selfSignedCert(certOptions, function(
+    err,
+    result
+  ) {
+    return new Promise((resolve, reject) => {
+      console.log(result);
+      console.log("certificate result above");
+      resolve();
+    });
+  });
+  return new Promise((resolve, reject) => {
+    console.log(certificate);
+    console.log("certificate result above");
+    resolve();
+  });
+}
+
+async function signAndBuildZXP() {
+  console.log("signing and building");
+  let signOptions = {
+    input: destinationFolder + panelName,
+    output: destinationFolder + panelName + ".zxp",
+    cert: `${__dirname}/cert.p12`,
+    password: "password",
+    timestamp: "http://timestamp.digicert.com"
+  };
+  const signResult = await zxpSignCmd.sign(signOptions, function(err, result) {
+    return new Promise((resolve, reject) => {
+      console.log(result);
+      console.log("sign result above");
+      resolve();
+    });
+  });
+  return new Promise((resolve, reject) => {
+    console.log(signResult);
+    console.log("sign result above");
+    resolve();
+  });
+}
+
+const build = series(compressFiles, createCert, function() {
+  signAndBuildZXP();
 });
 
 const cleanIntermediates = series(build, function() {
   console.log("done!");
-  return del(destinationFolder + panelName);
+  del(destinationFolder + panelName);
+  return new Promise((resolve, reject) => {
+    console.log(signResult);
+    console.log("sign result above");
+    resolve();
+  });
 });
 
-exports.default = series(cleanIntermediates);
+exports.default = series(cleanIntermediates, function(res, err) {
+  return new Promise((resolve, reject) => {
+    console.log(signResult);
+    console.log("sign result above");
+    resolve();
+  });
+});
