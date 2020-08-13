@@ -23,11 +23,15 @@ It is based on [Adam Plouff's excellent Skeletor template](https://github.com/ad
 
 - Removed Vue and Vue-dependent features 😢
 
-### Work in Progress
+## Automatic Setup Using Videotools
 
-- Using Gulp Shell to generate a certificate file.
+Videotools is a set of Python scripts written by Andrew Brady to support video pipeline workflows.
 
-## Setup
+The Zombietron Cloner (zombietron-cloner.py) will automatically download the project and configure it correctly.
+
+## Manual Setup
+
+If you do not want to use the Zombietron Cloner, you can download and set up manually.
 
 1. Clone Zombietron from Github using the following command
 
