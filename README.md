@@ -109,7 +109,7 @@ Once you're all done and want to share with someone else you need to sign the ex
 
 ## Thanks
 
-Obviously Adam Plouff, for releasing this to the public, and everyone else in the After Effects development community.
+Obviously [Adam Plouff](https://github.com/adamplouff), for releasing this to the public, and everyone else in the After Effects development community.
 
 ## License
 
