@@ -2,7 +2,7 @@
 
 This is my personal boilerplate and build system for creating Adobe Extension Panels.
 
-It is based on [Adam Plouff's excellent Skeletor template](https://github.com/adamplouff/CEP-Skelotron).
+It is based on [Adam Plouff's excellent Skelotron template](https://github.com/adamplouff/CEP-Skelotron).
 
 ## Features/Overview
 
@@ -109,7 +109,7 @@ Once you're all done and want to share with someone else you need to sign the ex
 
 ## Thanks
 
-Obviously [Adam Plouff](https://github.com/adamplouff), for releasing this to the public, and everyone else in the After Effects development community.
+Obviously [Adam Plouff](https://github.com/adamplouff), for releasing Skeotron to the public, and everyone else in the After Effects development community.
 
 ## License
 
